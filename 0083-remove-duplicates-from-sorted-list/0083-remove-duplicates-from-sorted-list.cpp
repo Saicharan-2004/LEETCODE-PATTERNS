@@ -17,20 +17,15 @@ public:
         ListNode*r=ans;
         while(temp!=NULL)
         {
-            int t=temp->val;
-            ans->next=temp;
-            ans=ans->next;
-            while(temp->next!=NULL && temp->next->val==t)
+            if(temp->next!=NULL&&temp->next->val==temp->val)
+            {
+                temp->next=temp->next->next;
+            }
+            else
             {
                 temp=temp->next;
             }
-            if(temp->next==NULL){
-                ans->next=NULL;
-                return r->next;
-            }
-            temp=temp->next;
         }
-
-        return r->next;
+        return head;
     }
 };
