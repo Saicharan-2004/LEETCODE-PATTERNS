@@ -3,13 +3,19 @@ public:
     vector<int> findDisappearedNumbers(vector<int>& nums) 
     {
         int n=nums.size();
-        unordered_set<int>temp(nums.begin(),nums.end());
         vector<int>ans;
-        for(int i=0;i<n;i++)
+        for(auto it:nums)
         {
-            if(temp.find(i+1)==temp.end())
+            while(nums[it-1]!=it)
             {
-                ans.push_back(i+1);
+                swap(it,nums[it-1]);
+            }
+        }
+        for(int i=1;i<=nums.size();i++)
+        {
+            if(i!=nums[i-1])
+            {
+                ans.push_back(i);
             }
         }
         return ans;
