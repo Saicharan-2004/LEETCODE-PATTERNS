@@ -29,6 +29,42 @@ public:
         {
             return 0;
         }
-        return helper(root);
+        queue<TreeNode*>q;
+        q.push(root);
+        q.push(NULL);
+        int d=1;
+        while(!q.empty())
+        {
+            TreeNode*front=q.front();
+            q.pop();
+            if(front==NULL)
+            {
+                if(q.empty())
+                {
+                    return d;
+                }
+                else
+                {
+                    d++;
+                    q.push(NULL);
+                }
+            }
+            else
+            {
+                if(front->left==NULL&&front->right==NULL)
+                {
+                    return d;
+                }
+                if(front->left)
+                {
+                    q.push(front->left);
+                }
+                if(front->right)
+                {
+                    q.push(front->right);
+                }
+            }
+        }
+        return d;
     }
 };
