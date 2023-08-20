@@ -11,11 +11,14 @@
  */
 class Solution {
 public:
-    int depth(TreeNode* root)
+    int depth(TreeNode* root,int &diameter)
     {
         if(root==NULL)
             return 0;
-        return 1+max(depth(root->left),depth(root->right));
+        int leftH=depth(root->left,diameter);
+        int rightH=depth(root->right,diameter);
+        diameter=max(leftH+rightH,diameter);
+        return 1+max(leftH,rightH);
     }
     int diameterOfBinaryTree(TreeNode* root) 
     {
@@ -23,6 +26,9 @@ public:
         {
             return 0;
         }
-        return max(diameterOfBinaryTree(root->right),max(diameterOfBinaryTree(root->left),depth(root->left)+depth(root->right)));
+        // return max(diameterOfBinaryTree(root->right),max(diameterOfBinaryTree(root->left),depth(root->left)+depth(root->right)));
+        int diameter=0;
+        int r=depth(root,diameter);
+        return diameter;
     }
 };
