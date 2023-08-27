@@ -35,7 +35,7 @@ public:
     }
     bool canCross(vector<int>& stones) 
     {
-        vector<vector<long long>>dp(stones.size()+2,vector<long long>(stones.size()+2,-1));
+        vector<vector<long long>>dp(stones.size()+1,vector<long long>(stones.size()+1,-1));
         return helper(stones,0,0,dp);
     }
 };
