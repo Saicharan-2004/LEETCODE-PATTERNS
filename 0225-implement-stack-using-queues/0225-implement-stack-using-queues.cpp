@@ -9,7 +9,7 @@ public:
     {
         int n=q.size();
         q.push(x);
-        while(n--)
+        for(int i=0;i<n;i++)
         {
             int r=q.front();
             q.pop();
